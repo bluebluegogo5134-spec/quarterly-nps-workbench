@@ -24,13 +24,20 @@
     </aside>
 
     <main>
-      <header class="topbar">
-        <div>
+      <header class="topbar hero-panel">
+        <div class="hero-copy">
           <p class="eyebrow">QUARTERLY NPS</p>
           <h1>季度任务中心</h1>
           <p class="subtitle">一个季度一个独立项目，数据、审核与报告互不覆盖。</p>
+          <div class="dashboard-summary" aria-label="任务概览">
+            <div><span id="totalCount">4</span><small>季度任务</small></div>
+            <div><span id="workingCount">1</span><small>当前进行中</small></div>
+            <div><span id="doneCount">3</span><small>已封版归档</small></div>
+          </div>
         </div>
         <button id="newTaskBtn" class="primary-btn">＋ 新建季度任务</button>
+        <i class="hero-orb orb-one" aria-hidden="true"></i>
+        <i class="hero-orb orb-two" aria-hidden="true"></i>
       </header>
 
       <section aria-labelledby="currentTitle">
