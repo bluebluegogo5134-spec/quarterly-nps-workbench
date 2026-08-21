@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="季度NPS报告自动化工作台">
+  <title>季度 NPS 工作台</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">N</div>
+        <div><strong>NPS 工作台</strong><span>季度报告自动化</span></div>
+      </div>
+      <nav aria-label="主导航">
+        <button class="nav-item active"><span>▦</span>季度任务</button>
+        <button class="nav-item" disabled title="后续板块"><span>⇧</span>数据导入</button>
+        <button class="nav-item" disabled title="后续板块"><span>✓</span>内容审核</button>
+        <button class="nav-item" disabled title="后续板块"><span>▤</span>报告预览</button>
+      </nav>
+      <div class="privacy-note">Excel仅在当前浏览器处理<br>不会上传到GitHub</div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">QUARTERLY NPS</p>
+          <h1>季度任务中心</h1>
+          <p class="subtitle">一个季度一个独立项目，数据、审核与报告互不覆盖。</p>
+        </div>
+        <button id="newTaskBtn" class="primary-btn">＋ 新建季度任务</button>
+      </header>
+
+      <section aria-labelledby="currentTitle">
+        <div class="section-heading">
+          <div><span class="dot"></span><h2 id="currentTitle">当前任务</h2></div>
+          <span id="saveState" class="save-state">已保存到本机</span>
+        </div>
+        <article id="currentTask" class="current-card"></article>
+      </section>
+
+      <section aria-labelledby="historyTitle" class="history-section">
+        <div class="section-heading history-heading">
+          <div><span class="dot muted"></span><h2 id="historyTitle">历史任务</h2></div>
+          <div class="filters" role="group" aria-label="任务筛选">
+            <button class="filter active" data-filter="all">全部</button>
+            <button class="filter" data-filter="working">进行中</button>
+            <button class="filter" data-filter="done">已封版</button>
+          </div>
+        </div>
+        <div id="taskGrid" class="task-grid"></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="newTaskDialog">
+    <form method="dialog" id="newTaskForm">
+      <div class="dialog-header">
+        <div><p class="eyebrow">NEW PROJECT</p><h2>新建季度任务</h2></div>
+        <button value="cancel" class="icon-btn" aria-label="关闭">×</button>
+      </div>
+      <label>报告季度
+        <select id="quarterInput" required>
+          <option value="26Q3">26Q3</option><option value="26Q4">26Q4</option><option value="27Q1">27Q1</option>
+        </select>
+      </label>
+      <label>项目名称
+        <input id="taskNameInput" value="等级会员 NPS 报告" required maxlength="40">
+      </label>
+      <p class="form-note">新任务会单独保存，不会覆盖历史季度。</p>
+      <div class="dialog-actions">
+        <button value="cancel" class="secondary-btn">取消</button>
+        <button id="createTaskBtn" value="default" class="primary-btn">创建任务</button>
+      </div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
